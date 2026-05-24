@@ -8,32 +8,32 @@ struct SettingsView: View {
         ZStack {
             Color.ankaDeepNight.ignoresSafeArea()
             Form {
-                Section("Sağlık Verisi") {
-                    Button("Apple Health İzni İste") {
+                Section("Health Data") {
+                    Button("Request Apple Health Access") {
                         Task {
                             try? await HealthKitService.shared.requestAuthorization()
                             healthAuthorized = true
                         }
                     }
                     if healthAuthorized {
-                        Label("İzin verildi", systemImage: "checkmark.circle.fill")
+                        Label("Permission granted", systemImage: "checkmark.circle.fill")
                             .foregroundStyle(.green)
                     }
                 }
 
-                Section("Bilgi") {
-                    LabeledContent("Versiyon", value: "0.1.0")
-                    LabeledContent("Geliştirici", value: "Birkan Aksoy")
+                Section("About") {
+                    LabeledContent("Version", value: "0.1.0")
+                    LabeledContent("Developer", value: "Birkan Aksoy")
                 }
 
-                Section("Tehlikeli") {
-                    Button("Anka'yı sıfırla", role: .destructive) {
+                Section("Danger Zone") {
+                    Button("Reset Anka", role: .destructive) {
                         Task { await PetStore.shared.clear() }
                     }
                 }
             }
             .scrollContentBackground(.hidden)
         }
-        .navigationTitle("Ayarlar")
+        .navigationTitle("Settings")
     }
 }

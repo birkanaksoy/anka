@@ -14,7 +14,7 @@ struct LoreView: View {
                 .padding()
             }
         }
-        .navigationTitle("Efsane Kitabı")
+        .navigationTitle("Book of Lore")
     }
 }
 

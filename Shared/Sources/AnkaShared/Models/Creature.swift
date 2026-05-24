@@ -20,15 +20,15 @@ public enum CreatureSpecies: String, Codable, CaseIterable, Sendable {
     public var loreShort: String {
         switch self {
         case .anka:
-            return "Türk-Pers mitolojisinin ölümsüz kuşu. Kül olur, küllerinden doğar."
+            return "The immortal firebird of Turkic and Persian myth. Burns to ash, born from it again."
         case .sahmaran:
-            return "Anadolu efsanesinin yılan-kız bilgesi. Yer altının sırlarını bilir."
+            return "The serpent-queen of Anatolian legend. Keeper of the secrets beneath the earth."
         case .hodag:
-            return "Karanlık ormanın koruyucu yaratığı. Geceleri görünür."
+            return "Guardian of the dark forest. Only seen by those who walk at night."
         case .karakoncolos:
-            return "Kış gecelerinin yaratığı. Karda gezenleri sınar."
+            return "Spirit of long winter nights. Tests those who wander through the snow."
         case .pirebatak:
-            return "Hızlı ve şefkatli yardımcı ruh. Çocuk masallarının dostu."
+            return "A swift and tender helper spirit. Friend of children's tales."
         }
     }
 }
@@ -46,11 +46,11 @@ public enum LifeStage: Int, Codable, Comparable, Sendable {
 
     public var displayName: String {
         switch self {
-        case .egg:     return "Yumurta"
-        case .baby:    return "Yavru"
-        case .young:   return "Genç"
-        case .adult:   return "Erişkin"
-        case .evolved: return "Evrimleşmiş"
+        case .egg:     return "Egg"
+        case .baby:    return "Hatchling"
+        case .young:   return "Young"
+        case .adult:   return "Adult"
+        case .evolved: return "Evolved"
         }
     }
 }
@@ -64,11 +64,11 @@ public enum EvolutionPath: String, Codable, CaseIterable, Sendable {
 
     public var displayName: String {
         switch self {
-        case .wanderer: return "Yolcu"
-        case .warrior:  return "Savaşçı"
-        case .sage:     return "Bilge"
-        case .dreamer:  return "Rüya"
-        case .master:   return "Usta"
+        case .wanderer: return "Wanderer"
+        case .warrior:  return "Warrior"
+        case .sage:     return "Sage"
+        case .dreamer:  return "Dreamer"
+        case .master:   return "Master"
         }
     }
 }

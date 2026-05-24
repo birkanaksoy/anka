@@ -7,16 +7,16 @@ struct HomeView: View {
     var body: some View {
         TabView {
             PetDashboard(pet: pet)
-                .tabItem { Label("Anka", systemImage: "sparkles") }
+                .tabItem { Label("Companion", systemImage: "sparkles") }
 
             AlbumView(records: pet.hatchedHistory)
-                .tabItem { Label("Albüm", systemImage: "book.closed.fill") }
+                .tabItem { Label("Album", systemImage: "book.closed.fill") }
 
             LoreView()
-                .tabItem { Label("Efsane", systemImage: "scroll.fill") }
+                .tabItem { Label("Lore", systemImage: "scroll.fill") }
 
             SettingsView()
-                .tabItem { Label("Ayarlar", systemImage: "gearshape.fill") }
+                .tabItem { Label("Settings", systemImage: "gearshape.fill") }
         }
         .tint(Color.ankaGold)
     }
@@ -88,7 +88,7 @@ struct PathBadge: View {
     var body: some View {
         HStack(spacing: 8) {
             Image(systemName: iconFor(path))
-            Text("Eğilim: \(path.displayName)")
+            Text("Path: \(path.displayName)")
                 .font(.system(.subheadline, design: .serif))
         }
         .padding(.horizontal, 14).padding(.vertical, 8)
@@ -115,13 +115,13 @@ struct StatsCard: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Bugüne kadar")
+            Text("So Far")
                 .font(.system(.title3, design: .serif, weight: .semibold))
                 .foregroundStyle(Color.ankaGold)
             HStack {
-                statTile(label: "Yaş", value: "\(pet.ageInDays) gün")
-                statTile(label: "Beslenme", value: "\(pet.snapshots.count) gün")
-                statTile(label: "Aşama", value: pet.currentStage.displayName)
+                statTile(label: "Age", value: "\(pet.ageInDays) d")
+                statTile(label: "Fed", value: "\(pet.snapshots.count) d")
+                statTile(label: "Stage", value: pet.currentStage.displayName)
             }
         }
         .padding()

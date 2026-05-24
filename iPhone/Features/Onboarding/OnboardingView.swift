@@ -39,20 +39,20 @@ struct OnboardingView: View {
             Text("ANKA")
                 .font(.system(size: 64, weight: .bold, design: .serif))
                 .foregroundStyle(Color.ankaGold)
-            Text("Bileğinde bir yoldaş")
+            Text("A Wrist Companion")
                 .font(.system(.title2, design: .serif))
                 .italic()
                 .foregroundStyle(.secondary)
         }
         Spacer()
-        Text("Adımlarınla, kalp atışınla, uykunla beslenecek.\nHangi mitolojik canlı seninle yola çıkacak?")
+        Text("Your steps, heartbeats, and sleep will shape it.\nChoose the creature that will walk with you.")
             .multilineTextAlignment(.center)
             .font(.body)
             .foregroundStyle(.white.opacity(0.8))
             .padding(.horizontal)
         Spacer()
         Button(action: { step = 1 }) {
-            Text("Başla")
+            Text("Begin")
                 .frame(maxWidth: .infinity)
         }
         .buttonStyle(AnkaPrimaryButtonStyle())
@@ -60,7 +60,7 @@ struct OnboardingView: View {
 
     @ViewBuilder
     private var speciesPicker: some View {
-        Text("Yoldaşını Seç")
+        Text("Choose Your Companion")
             .font(.system(.largeTitle, design: .serif, weight: .bold))
             .foregroundStyle(Color.ankaGold)
             .padding(.top)
@@ -74,7 +74,7 @@ struct OnboardingView: View {
             }
         }
         Button(action: { step = 2 }) {
-            Text("Devam")
+            Text("Continue")
                 .frame(maxWidth: .infinity)
         }
         .buttonStyle(AnkaPrimaryButtonStyle())
@@ -83,13 +83,13 @@ struct OnboardingView: View {
     @ViewBuilder
     private var namePicker: some View {
         Spacer()
-        Text("Bir İsim Ver")
+        Text("Give It a Name")
             .font(.system(.largeTitle, design: .serif, weight: .bold))
             .foregroundStyle(Color.ankaGold)
         Text(selectedSpecies.displayName)
             .font(.system(.title3, design: .serif))
             .foregroundStyle(.secondary)
-        TextField("İsim", text: $name)
+        TextField("Name", text: $name)
             .textFieldStyle(.roundedBorder)
             .padding(.horizontal, 40)
             .padding(.top)
@@ -101,7 +101,7 @@ struct OnboardingView: View {
                 await onComplete(selectedSpecies, finalName)
             }
         } label: {
-            Text("Yumurtayı Aç")
+            Text("Hatch the Egg")
                 .frame(maxWidth: .infinity)
         }
         .buttonStyle(AnkaPrimaryButtonStyle())

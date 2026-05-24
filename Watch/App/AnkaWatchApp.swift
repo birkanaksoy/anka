@@ -31,7 +31,7 @@ struct EmptyPetView: View {
             Image(systemName: "iphone.circle")
                 .font(.largeTitle)
                 .foregroundStyle(Color.ankaGoldWatch)
-            Text("iPhone'da Anka'nı oluştur")
+            Text("Open Anka on your iPhone to begin")
                 .font(.system(.caption, design: .serif))
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.secondary)

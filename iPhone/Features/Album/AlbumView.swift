@@ -30,7 +30,7 @@ struct AlbumView: View {
                 .scrollContentBackground(.hidden)
             }
         }
-        .navigationTitle("Hatıra Albümü")
+        .navigationTitle("Album")
     }
 
     private var emptyState: some View {
@@ -38,10 +38,10 @@ struct AlbumView: View {
             Image(systemName: "book.closed")
                 .font(.system(size: 64))
                 .foregroundStyle(Color.ankaGold.opacity(0.5))
-            Text("Henüz evrimleşmiş yoldaş yok")
+            Text("No evolved companions yet")
                 .font(.system(.title3, design: .serif))
                 .foregroundStyle(.white.opacity(0.7))
-            Text("Anka'n evrimleştiğinde\nburada yer alacak.")
+            Text("When your Anka evolves,\nit will live here forever.")
                 .font(.subheadline)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.white.opacity(0.5))
