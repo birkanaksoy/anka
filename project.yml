@@ -42,6 +42,7 @@ targets:
         INFOPLIST_KEY_UIUserInterfaceStyle: Dark
         INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.games
         CODE_SIGN_ENTITLEMENTS: iPhone/Anka.entitlements
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
     info:
       path: iPhone/Info.plist
       properties:
