@@ -24,6 +24,8 @@ struct HomeView: View {
 
 struct PetDashboard: View {
     let pet: PetState
+    @State private var todaySnapshot: HealthSnapshot?
+    @State private var isRefreshing = false
 
     var body: some View {
         ZStack {
@@ -42,11 +44,82 @@ struct PetDashboard: View {
 
                     PathBadge(path: pet.currentPath)
 
+                    if let todaySnapshot {
+                        TodayCard(snapshot: todaySnapshot)
+                    } else {
+                        Button {
+                            refresh()
+                        } label: {
+                            Label(isRefreshing ? "Reading…" : "Read Today's Health", systemImage: "heart.text.square")
+                                .frame(maxWidth: .infinity)
+                        }
+                        .buttonStyle(AnkaPrimaryButtonStyle())
+                        .disabled(isRefreshing)
+                    }
+
                     StatsCard(pet: pet)
                 }
                 .padding()
             }
         }
+        .task { refresh() }
+    }
+
+    private func refresh() {
+        guard !isRefreshing else { return }
+        isRefreshing = true
+        Task {
+            let snap = await HealthKitService.shared.todaySnapshot()
+            await MainActor.run {
+                self.todaySnapshot = snap
+                self.isRefreshing = false
+            }
+        }
+    }
+}
+
+struct TodayCard: View {
+    let snapshot: HealthSnapshot
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Today")
+                .font(.system(.title3, design: .serif, weight: .semibold))
+                .foregroundStyle(Color.ankaGold)
+            HStack {
+                metric(label: "Steps", value: "\(snapshot.steps)", icon: "figure.walk")
+                metric(label: "HR min", value: "\(snapshot.heartRateZoneMinutes)", icon: "heart.fill")
+                metric(label: "Stand", value: "\(snapshot.standHours)", icon: "figure.stand")
+            }
+            HStack {
+                metric(label: "Sleep", value: String(format: "%.1f h", snapshot.sleepHours), icon: "moon.stars.fill")
+                metric(label: "Workout", value: "\(snapshot.workoutMinutes) m", icon: "figure.run")
+                Spacer().frame(maxWidth: .infinity)
+            }
+        }
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color.black.opacity(0.4))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(Color.ankaGold.opacity(0.4), lineWidth: 1)
+                )
+        )
+    }
+
+    private func metric(label: String, value: String, icon: String) -> some View {
+        VStack(spacing: 4) {
+            Image(systemName: icon)
+                .foregroundStyle(Color.ankaGold.opacity(0.85))
+            Text(value)
+                .font(.system(.headline, design: .serif, weight: .bold))
+                .foregroundStyle(.white)
+            Text(label)
+                .font(.caption2)
+                .foregroundStyle(.white.opacity(0.6))
+        }
+        .frame(maxWidth: .infinity)
     }
 }
 
