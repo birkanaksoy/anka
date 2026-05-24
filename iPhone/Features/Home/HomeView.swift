@@ -3,10 +3,11 @@ import AnkaShared
 
 struct HomeView: View {
     let pet: PetState
+    let todaySnapshot: HealthSnapshot?
 
     var body: some View {
         TabView {
-            PetDashboard(pet: pet)
+            PetDashboard(pet: pet, todaySnapshot: todaySnapshot)
                 .tabItem { Label("Companion", systemImage: "sparkles") }
 
             AlbumView(records: pet.hatchedHistory)
@@ -24,8 +25,7 @@ struct HomeView: View {
 
 struct PetDashboard: View {
     let pet: PetState
-    @State private var todaySnapshot: HealthSnapshot?
-    @State private var isRefreshing = false
+    let todaySnapshot: HealthSnapshot?
 
     var body: some View {
         ZStack {
@@ -47,14 +47,7 @@ struct PetDashboard: View {
                     if let todaySnapshot {
                         TodayCard(snapshot: todaySnapshot)
                     } else {
-                        Button {
-                            refresh()
-                        } label: {
-                            Label(isRefreshing ? "Reading…" : "Read Today's Health", systemImage: "heart.text.square")
-                                .frame(maxWidth: .infinity)
-                        }
-                        .buttonStyle(AnkaPrimaryButtonStyle())
-                        .disabled(isRefreshing)
+                        EmptyTodayCard()
                     }
 
                     StatsCard(pet: pet)
@@ -62,19 +55,30 @@ struct PetDashboard: View {
                 .padding()
             }
         }
-        .task { refresh() }
     }
+}
 
-    private func refresh() {
-        guard !isRefreshing else { return }
-        isRefreshing = true
-        Task {
-            let snap = await HealthKitService.shared.todaySnapshot()
-            await MainActor.run {
-                self.todaySnapshot = snap
-                self.isRefreshing = false
-            }
+struct EmptyTodayCard: View {
+    var body: some View {
+        VStack(spacing: 8) {
+            Image(systemName: "heart.text.square")
+                .font(.title2)
+                .foregroundStyle(Color.ankaGold.opacity(0.6))
+            Text("Grant Health access in Settings\nto feed your Anka.")
+                .font(.caption)
+                .multilineTextAlignment(.center)
+                .foregroundStyle(.white.opacity(0.6))
         }
+        .frame(maxWidth: .infinity)
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color.black.opacity(0.3))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(Color.ankaGold.opacity(0.25), lineWidth: 1)
+                )
+        )
     }
 }
 

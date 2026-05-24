@@ -67,3 +67,68 @@ final class EvolutionEngineTests: XCTestCase {
         XCTAssertGreaterThanOrEqual(pet.currentStage, .young)
     }
 }
+
+final class PetStoreTests: XCTestCase {
+    private let suiteName = "anka.tests.\(UUID().uuidString)"
+
+    override func tearDown() async throws {
+        UserDefaults().removePersistentDomain(forName: suiteName)
+    }
+
+    func testRecordSnapshotReplacesSameCalendarDay() async {
+        let store = PetStore(suiteName: suiteName)
+        let pet = PetState(species: .anka, name: "Test")
+        await store.save(pet)
+
+        let morning = HealthSnapshot(
+            date: Calendar.current.date(byAdding: .hour, value: -3, to: Date())!,
+            steps: 1000, heartRateZoneMinutes: 0,
+            standHours: 1, sleepHours: 0, workoutMinutes: 0
+        )
+        let evening = HealthSnapshot(
+            date: Date(),
+            steps: 8000, heartRateZoneMinutes: 0,
+            standHours: 8, sleepHours: 0, workoutMinutes: 0
+        )
+
+        await store.record(snapshot: morning)
+        await store.record(snapshot: evening)
+
+        let loaded = await store.load()
+        XCTAssertEqual(loaded?.snapshots.count, 1, "Same day should keep only the latest snapshot")
+        XCTAssertEqual(loaded?.snapshots.first?.steps, 8000)
+    }
+
+    func testArchiveIfEvolvedCreatesRecordAndResetsSnapshots() async {
+        let store = PetStore(suiteName: suiteName)
+        let strongDay = HealthSnapshot(
+            date: Date(), steps: 15_000, heartRateZoneMinutes: 30,
+            standHours: 12, sleepHours: 8, workoutMinutes: 30
+        )
+        // Fabricate snapshots from different days to satisfy the rolling window.
+        let calendar = Calendar.current
+        var snaps: [HealthSnapshot] = []
+        for i in 0..<13 {
+            let date = calendar.date(byAdding: .day, value: -i, to: Date())!
+            snaps.append(HealthSnapshot(
+                date: date, steps: strongDay.steps,
+                heartRateZoneMinutes: strongDay.heartRateZoneMinutes,
+                standHours: strongDay.standHours,
+                sleepHours: strongDay.sleepHours,
+                workoutMinutes: strongDay.workoutMinutes
+            ))
+        }
+        let pet = PetState(species: .anka, name: "Evolver", snapshots: snaps)
+        XCTAssertEqual(pet.currentStage, .evolved, "Setup precondition")
+
+        await store.save(pet)
+        let record = await store.archiveIfEvolved()
+        XCTAssertNotNil(record)
+        XCTAssertEqual(record?.species, .anka)
+
+        let reset = await store.load()
+        XCTAssertEqual(reset?.snapshots.count, 0)
+        XCTAssertEqual(reset?.hatchedHistory.count, 1)
+        XCTAssertEqual(reset?.currentStage, .egg)
+    }
+}

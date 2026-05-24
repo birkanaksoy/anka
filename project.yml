@@ -39,6 +39,14 @@ targets:
         INFOPLIST_KEY_CFBundleDisplayName: Anka
         INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
         INFOPLIST_KEY_NSHealthShareUsageDescription: "Anka grows and evolves from your daily steps, heart rate, stand hours, sleep and workouts."
+    info:
+      path: iPhone/Info.plist
+      properties:
+        BGTaskSchedulerPermittedIdentifiers:
+          - com.birkanaksoy.anka.dailyRefresh
+        UIBackgroundModes:
+          - fetch
+          - processing
 
   AnkaWatch:
     type: application

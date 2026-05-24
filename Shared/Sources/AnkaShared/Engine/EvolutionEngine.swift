@@ -61,4 +61,9 @@ public enum EvolutionEngine {
         default:       return .evolved
         }
     }
+
+    /// Returns the date of the previous calendar day from `date`.
+    public static func sameCalendarDay(_ a: Date, _ b: Date, calendar: Calendar = .current) -> Bool {
+        calendar.isDate(a, inSameDayAs: b)
+    }
 }
