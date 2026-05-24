@@ -18,3 +18,13 @@ open Anka.xcodeproj
 - Xcode 16+
 - iOS 17.0+ / watchOS 10.0+
 - Apple Developer hesabı
+
+## Release
+
+```bash
+./scripts/archive.sh           # archive + export
+./scripts/archive.sh upload    # ... and upload to App Store Connect
+```
+
+See [Submission Checklist](docs/SUBMISSION_CHECKLIST.md) and
+[App Store Connect Setup](docs/APP_STORE_CONNECT.md).
