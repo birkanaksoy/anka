@@ -39,6 +39,7 @@ targets:
         INFOPLIST_KEY_CFBundleDisplayName: Anka
         INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
         INFOPLIST_KEY_NSHealthShareUsageDescription: "Anka grows and evolves from your daily steps, heart rate, stand hours, sleep and workouts."
+        CODE_SIGN_ENTITLEMENTS: iPhone/Anka.entitlements
     info:
       path: iPhone/Info.plist
       properties:
@@ -63,6 +64,7 @@ targets:
         INFOPLIST_KEY_WKWatchOnly: NO
         INFOPLIST_KEY_WKCompanionAppBundleIdentifier: com.birkanaksoy.anka
         INFOPLIST_KEY_NSHealthShareUsageDescription: "Anka grows and evolves from your daily steps, heart rate, stand hours, sleep and workouts."
+        CODE_SIGN_ENTITLEMENTS: Watch/AnkaWatch.entitlements
 
   AnkaTests:
     type: bundle.unit-test

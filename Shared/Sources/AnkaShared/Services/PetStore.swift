@@ -2,7 +2,7 @@ import Foundation
 
 /// Lightweight UserDefaults-backed store for the current pet and history.
 public actor PetStore {
-    public static let shared = PetStore()
+    public static let shared = PetStore(suiteName: AppGroup.identifier)
 
     private let defaults: UserDefaults
     private let petKey = "anka.currentPet"

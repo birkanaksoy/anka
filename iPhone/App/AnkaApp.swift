@@ -9,6 +9,16 @@ struct AnkaApp: App {
 
     init() {
         BackgroundRefresh.register()
+        Task { @MainActor in
+            ConnectivityService.shared.activate()
+            ConnectivityService.shared.onMessage = { msg in
+                Task { @MainActor in
+                    if msg == .refreshNow {
+                        _ = await DailyPipeline().run()
+                    }
+                }
+            }
+        }
     }
 
     var body: some Scene {
@@ -40,6 +50,9 @@ struct AnkaApp: App {
             self.pet = result.pet
             if let evolved = result.evolved {
                 self.newlyEvolved = evolved
+            }
+            if let pet = result.pet {
+                ConnectivityService.shared.push(pet: pet)
             }
         }
     }

@@ -3,15 +3,32 @@ import AnkaShared
 
 @main
 struct AnkaWatchApp: App {
+    @State private var pet: PetState?
+
+    init() {
+        Task { @MainActor in
+            ConnectivityService.shared.activate()
+        }
+    }
+
     var body: some Scene {
         WindowGroup {
-            WatchRootView()
+            WatchRootView(pet: $pet)
+                .task {
+                    pet = await PetStore.shared.load()
+                    ConnectivityService.shared.onPetReceived = { incoming in
+                        Task { @MainActor in
+                            self.pet = incoming
+                            await PetStore.shared.save(incoming)
+                        }
+                    }
+                }
         }
     }
 }
 
 struct WatchRootView: View {
-    @State private var pet: PetState?
+    @Binding var pet: PetState?
 
     var body: some View {
         Group {
@@ -21,7 +38,6 @@ struct WatchRootView: View {
                 EmptyPetView()
             }
         }
-        .task { pet = await PetStore.shared.load() }
     }
 }
 
