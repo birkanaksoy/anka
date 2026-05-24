@@ -7,6 +7,7 @@ struct OnboardingView: View {
     @State private var step = 0
     @State private var selectedSpecies: CreatureSpecies = .anka
     @State private var name: String = ""
+    @StateObject private var store = StoreService.shared
 
     var body: some View {
         ZStack {
@@ -16,6 +17,7 @@ struct OnboardingView: View {
                 case 0: welcome
                 case 1: speciesPicker
                 case 2: namePicker
+                case 3: PaywallView(dismissible: true).onDisappear { step = 1 }
                 default: EmptyView()
                 }
             }
@@ -66,10 +68,18 @@ struct OnboardingView: View {
             .padding(.top)
         ScrollView {
             ForEach(CreatureSpecies.allCases, id: \.self) { species in
+                let locked = !store.isPremium && species != .anka
                 SpeciesCard(
                     species: species,
                     isSelected: species == selectedSpecies,
-                    onTap: { selectedSpecies = species }
+                    locked: locked,
+                    onTap: {
+                        if locked {
+                            step = 3   // show paywall
+                        } else {
+                            selectedSpecies = species
+                        }
+                    }
                 )
             }
         }
@@ -111,6 +121,7 @@ struct OnboardingView: View {
 struct SpeciesCard: View {
     let species: CreatureSpecies
     let isSelected: Bool
+    let locked: Bool
     let onTap: () -> Void
 
     var body: some View {
@@ -126,16 +137,20 @@ struct SpeciesCard: View {
                         .multilineTextAlignment(.leading)
                 }
                 Spacer()
-                if isSelected {
+                if locked {
+                    Image(systemName: "lock.fill")
+                        .foregroundStyle(Color.ankaGold.opacity(0.6))
+                        .accessibilityHidden(true)
+                } else if isSelected {
                     Image(systemName: "checkmark.circle.fill")
                         .foregroundStyle(Color.ankaGold)
                         .accessibilityHidden(true)
                 }
             }
             .accessibilityElement(children: .combine)
-            .accessibilityLabel(species.displayName)
+            .accessibilityLabel(locked ? "\(species.displayName), locked" : species.displayName)
             .accessibilityValue(isSelected ? "Selected" : "Not selected")
-            .accessibilityHint(species.loreShort)
+            .accessibilityHint(locked ? "Unlock with Anka Premium" : species.loreShort)
             .padding()
             .background(
                 RoundedRectangle(cornerRadius: 12)

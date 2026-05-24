@@ -4,6 +4,8 @@ import AnkaShared
 struct SettingsView: View {
     @State private var healthAuthorized = false
     @State private var notificationsAuthorized = false
+    @State private var showPaywall = false
+    @StateObject private var store = StoreService.shared
 
     var body: some View {
         ZStack {
@@ -31,6 +33,20 @@ struct SettingsView: View {
                     }
                 }
 
+                Section("Premium") {
+                    if store.isPremium {
+                        Label("Anka Premium unlocked", systemImage: "sparkles")
+                            .foregroundStyle(Color.ankaGold)
+                    } else {
+                        Button("Unlock Anka Premium") {
+                            showPaywall = true
+                        }
+                        Button("Restore Purchase") {
+                            Task { await store.restore() }
+                        }
+                    }
+                }
+
                 Section("About") {
                     LabeledContent("Version", value: "0.1.0")
                     LabeledContent("Developer", value: "Birkan Aksoy")
@@ -48,5 +64,8 @@ struct SettingsView: View {
             }
         }
         .navigationTitle("Settings")
+        .sheet(isPresented: $showPaywall) {
+            PaywallView(dismissible: true)
+        }
     }
 }
