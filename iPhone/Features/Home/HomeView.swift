@@ -90,6 +90,7 @@ struct TodayCard: View {
             Text("Today")
                 .font(.system(.title3, design: .serif, weight: .semibold))
                 .foregroundStyle(Color.ankaGold)
+                .accessibilityAddTraits(.isHeader)
             HStack {
                 metric(label: "Steps", value: "\(snapshot.steps)", icon: "figure.walk")
                 metric(label: "HR min", value: "\(snapshot.heartRateZoneMinutes)", icon: "heart.fill")
@@ -116,6 +117,7 @@ struct TodayCard: View {
         VStack(spacing: 4) {
             Image(systemName: icon)
                 .foregroundStyle(Color.ankaGold.opacity(0.85))
+                .accessibilityHidden(true)
             Text(value)
                 .font(.system(.headline, design: .serif, weight: .bold))
                 .foregroundStyle(.white)
@@ -124,6 +126,8 @@ struct TodayCard: View {
                 .foregroundStyle(.white.opacity(0.6))
         }
         .frame(maxWidth: .infinity)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(label): \(value)")
     }
 }
 
@@ -144,7 +148,10 @@ struct CreatureCanvas: View {
             // Placeholder silhouette: real illustrations land in Sprint 8.
             Text(emojiFor(species: species, stage: stage))
                 .font(.system(size: 120))
+                .accessibilityHidden(true)
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(species.displayName), stage \(stage.displayName)")
     }
 
     private func emojiFor(species: CreatureSpecies, stage: LifeStage) -> String {
@@ -165,6 +172,7 @@ struct PathBadge: View {
     var body: some View {
         HStack(spacing: 8) {
             Image(systemName: iconFor(path))
+                .accessibilityHidden(true)
             Text("Path: \(path.displayName)")
                 .font(.system(.subheadline, design: .serif))
         }
@@ -174,6 +182,7 @@ struct PathBadge: View {
                 .overlay(Capsule().stroke(Color.ankaGold.opacity(0.6), lineWidth: 1))
         )
         .foregroundStyle(Color.ankaGold)
+        .accessibilityElement(children: .combine)
     }
 
     private func iconFor(_ p: EvolutionPath) -> String {

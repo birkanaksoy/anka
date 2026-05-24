@@ -72,6 +72,9 @@ struct WatchPetView: View {
                 .font(.system(size: 56))
                 .scaleEffect(scaleForBreath)
                 .shadow(color: Color.ankaGoldWatch.opacity(0.5), radius: 6)
+                .accessibilityLabel("\(pet.species.displayName), \(pet.currentStage.displayName)")
+                .accessibilityAddTraits(.isButton)
+                .accessibilityHint("Double tap to feed")
                 .onTapGesture {
                     handleTap()
                 }

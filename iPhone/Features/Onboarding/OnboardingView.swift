@@ -129,8 +129,13 @@ struct SpeciesCard: View {
                 if isSelected {
                     Image(systemName: "checkmark.circle.fill")
                         .foregroundStyle(Color.ankaGold)
+                        .accessibilityHidden(true)
                 }
             }
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel(species.displayName)
+            .accessibilityValue(isSelected ? "Selected" : "Not selected")
+            .accessibilityHint(species.loreShort)
             .padding()
             .background(
                 RoundedRectangle(cornerRadius: 12)

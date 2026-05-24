@@ -39,6 +39,8 @@ targets:
         INFOPLIST_KEY_CFBundleDisplayName: Anka
         INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
         INFOPLIST_KEY_NSHealthShareUsageDescription: "Anka grows and evolves from your daily steps, heart rate, stand hours, sleep and workouts."
+        INFOPLIST_KEY_UIUserInterfaceStyle: Dark
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.games
         CODE_SIGN_ENTITLEMENTS: iPhone/Anka.entitlements
     info:
       path: iPhone/Info.plist
