@@ -1,0 +1,47 @@
+{
+  "": {
+    "swift-dependencies": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/primary.swiftdeps"
+  },
+  "/Users/birkanaksoy/oyun009/Shared/Sources/AnkaShared/Engine/EvolutionEngine.swift": {
+    "dependencies": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/EvolutionEngine.d",
+    "object": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/EvolutionEngine.swift.o",
+    "swiftmodule": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/EvolutionEngine~partial.swiftmodule",
+    "swift-dependencies": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/EvolutionEngine.swiftdeps",
+    "diagnostics": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/EvolutionEngine.dia"
+  },
+  "/Users/birkanaksoy/oyun009/Shared/Sources/AnkaShared/Models/Creature.swift": {
+    "dependencies": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/Creature.d",
+    "object": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/Creature.swift.o",
+    "swiftmodule": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/Creature~partial.swiftmodule",
+    "swift-dependencies": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/Creature.swiftdeps",
+    "diagnostics": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/Creature.dia"
+  },
+  "/Users/birkanaksoy/oyun009/Shared/Sources/AnkaShared/Models/HealthSnapshot.swift": {
+    "dependencies": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/HealthSnapshot.d",
+    "object": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/HealthSnapshot.swift.o",
+    "swiftmodule": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/HealthSnapshot~partial.swiftmodule",
+    "swift-dependencies": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/HealthSnapshot.swiftdeps",
+    "diagnostics": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/HealthSnapshot.dia"
+  },
+  "/Users/birkanaksoy/oyun009/Shared/Sources/AnkaShared/Models/PetState.swift": {
+    "dependencies": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/PetState.d",
+    "object": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/PetState.swift.o",
+    "swiftmodule": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/PetState~partial.swiftmodule",
+    "swift-dependencies": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/PetState.swiftdeps",
+    "diagnostics": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/PetState.dia"
+  },
+  "/Users/birkanaksoy/oyun009/Shared/Sources/AnkaShared/Services/HealthKitService.swift": {
+    "dependencies": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/HealthKitService.d",
+    "object": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/HealthKitService.swift.o",
+    "swiftmodule": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/HealthKitService~partial.swiftmodule",
+    "swift-dependencies": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/HealthKitService.swiftdeps",
+    "diagnostics": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/HealthKitService.dia"
+  },
+  "/Users/birkanaksoy/oyun009/Shared/Sources/AnkaShared/Services/PetStore.swift": {
+    "dependencies": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/PetStore.d",
+    "object": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/PetStore.swift.o",
+    "swiftmodule": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/PetStore~partial.swiftmodule",
+    "swift-dependencies": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/PetStore.swiftdeps",
+    "diagnostics": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/PetStore.dia"
+  }
+}

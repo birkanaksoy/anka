@@ -1,0 +1,112 @@
+client:
+  name: basic
+  file-system: device-agnostic
+tools: {}
+targets:
+  "AnkaShared-arm64-apple-macosx-debug.module": ["<AnkaShared-arm64-apple-macosx-debug.module>"]
+  "AnkaSharedPackageTests-arm64-apple-macosx-debug.module": ["<AnkaSharedPackageTests-arm64-apple-macosx-debug.module>"]
+  "AnkaSharedPackageTests-arm64-apple-macosx-debug.test": ["<AnkaSharedPackageTests-arm64-apple-macosx-debug.test>"]
+  "AnkaSharedTests-arm64-apple-macosx-debug.module": ["<AnkaSharedTests-arm64-apple-macosx-debug.module>"]
+  "PackageStructure": ["<PackageStructure>"]
+  "main": ["<AnkaShared-arm64-apple-macosx-debug.module>"]
+  "test": ["<AnkaShared-arm64-apple-macosx-debug.module>","<AnkaSharedPackageTests-arm64-apple-macosx-debug.test>","<AnkaSharedTests-arm64-apple-macosx-debug.module>"]
+default: "main"
+nodes:
+  "/Users/birkanaksoy/oyun009/Shared/Sources/AnkaShared/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+  "/Users/birkanaksoy/oyun009/Shared/Tests/AnkaSharedTests/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+commands:
+  "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/birkanaksoy/oyun009/Shared/Sources/AnkaShared/Engine/EvolutionEngine.swift","/Users/birkanaksoy/oyun009/Shared/Sources/AnkaShared/Models/Creature.swift","/Users/birkanaksoy/oyun009/Shared/Sources/AnkaShared/Models/HealthSnapshot.swift","/Users/birkanaksoy/oyun009/Shared/Sources/AnkaShared/Models/PetState.swift","/Users/birkanaksoy/oyun009/Shared/Sources/AnkaShared/Services/HealthKitService.swift","/Users/birkanaksoy/oyun009/Shared/Sources/AnkaShared/Services/PetStore.swift"]
+    outputs: ["/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/sources"]
+    description: "Write auxiliary file /Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/sources"
+
+  "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedPackageTests.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedPackageTests.derived/runner.swift"]
+    outputs: ["/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedPackageTests.build/sources"]
+    description: "Write auxiliary file /Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedPackageTests.build/sources"
+
+  "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedPackageTests.derived/runner.swift":
+    tool: test-entry-point-tool
+    inputs: []
+    outputs: ["/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedPackageTests.derived/runner.swift"]
+
+  "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedPackageTests.product/Objects.LinkFileList":
+    tool: write-auxiliary-file
+    inputs: ["<link-file-list>","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/Creature.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/EvolutionEngine.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/HealthKitService.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/HealthSnapshot.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/PetState.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/PetStore.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedPackageTests.build/runner.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedTests.build/EvolutionEngineTests.swift.o"]
+    outputs: ["/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedPackageTests.product/Objects.LinkFileList"]
+    description: "Write auxiliary file /Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedPackageTests.product/Objects.LinkFileList"
+
+  "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedTests.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/birkanaksoy/oyun009/Shared/Tests/AnkaSharedTests/EvolutionEngineTests.swift"]
+    outputs: ["/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedTests.build/sources"]
+    description: "Write auxiliary file /Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedTests.build/sources"
+
+  "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt":
+    tool: write-auxiliary-file
+    inputs: ["<swift-get-version>","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"]
+    outputs: ["/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"]
+    always-out-of-date: "true"
+    description: "Write auxiliary file /Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+
+  "<AnkaShared-arm64-apple-macosx-debug.module>":
+    tool: phony
+    inputs: ["/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/EvolutionEngine.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/Creature.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/HealthSnapshot.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/PetState.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/HealthKitService.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/PetStore.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/Modules/AnkaShared.swiftmodule"]
+    outputs: ["<AnkaShared-arm64-apple-macosx-debug.module>"]
+
+  "<AnkaSharedPackageTests-arm64-apple-macosx-debug.module>":
+    tool: phony
+    inputs: ["/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedPackageTests.build/runner.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/Modules/AnkaSharedPackageTests.swiftmodule"]
+    outputs: ["<AnkaSharedPackageTests-arm64-apple-macosx-debug.module>"]
+
+  "<AnkaSharedPackageTests-arm64-apple-macosx-debug.test>":
+    tool: phony
+    inputs: ["/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedPackageTests.xctest/Contents/MacOS/AnkaSharedPackageTests"]
+    outputs: ["<AnkaSharedPackageTests-arm64-apple-macosx-debug.test>"]
+
+  "<AnkaSharedTests-arm64-apple-macosx-debug.module>":
+    tool: phony
+    inputs: ["/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedTests.build/EvolutionEngineTests.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/Modules/AnkaSharedTests.swiftmodule"]
+    outputs: ["<AnkaSharedTests-arm64-apple-macosx-debug.module>"]
+
+  "C.AnkaShared-arm64-apple-macosx-debug.module":
+    tool: shell
+    inputs: ["/Users/birkanaksoy/oyun009/Shared/Sources/AnkaShared/Engine/EvolutionEngine.swift","/Users/birkanaksoy/oyun009/Shared/Sources/AnkaShared/Models/Creature.swift","/Users/birkanaksoy/oyun009/Shared/Sources/AnkaShared/Models/HealthSnapshot.swift","/Users/birkanaksoy/oyun009/Shared/Sources/AnkaShared/Models/PetState.swift","/Users/birkanaksoy/oyun009/Shared/Sources/AnkaShared/Services/HealthKitService.swift","/Users/birkanaksoy/oyun009/Shared/Sources/AnkaShared/Services/PetStore.swift","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/sources"]
+    outputs: ["/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/EvolutionEngine.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/Creature.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/HealthSnapshot.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/PetState.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/HealthKitService.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/PetStore.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/Modules/AnkaShared.swiftmodule"]
+    description: "Compiling Swift Module 'AnkaShared' (6 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","AnkaShared","-emit-dependencies","-emit-module","-emit-module-path","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/Modules/AnkaShared.swiftmodule","-output-file-map","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/output-file-map.json","-parse-as-library","-incremental","-c","@/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/sources","-I","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/Modules","-target","arm64-apple-macosx10.13","-incremental","-enable-batch-mode","-serialize-diagnostics","-index-store-path","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-j10","-DSWIFT_PACKAGE","-DDEBUG","-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE","-module-cache-path","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-emit-objc-header","-emit-objc-header-path","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/include/AnkaShared-Swift.h","-swift-version","6","-plugin-path","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.4.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.4.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-Xcc","-g","-package-name","shared"]
+
+  "C.AnkaSharedPackageTests-arm64-apple-macosx-debug.module":
+    tool: shell
+    inputs: ["/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedPackageTests.derived/runner.swift","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/Modules/AnkaSharedTests.swiftmodule","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedPackageTests.build/sources"]
+    outputs: ["/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedPackageTests.build/runner.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/Modules/AnkaSharedPackageTests.swiftmodule"]
+    description: "Compiling Swift Module 'AnkaSharedPackageTests' (1 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","AnkaSharedPackageTests","-emit-dependencies","-emit-module","-emit-module-path","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/Modules/AnkaSharedPackageTests.swiftmodule","-output-file-map","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedPackageTests.build/output-file-map.json","-parse-as-library","-incremental","-c","@/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedPackageTests.build/sources","-I","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/Modules","-target","arm64-apple-macosx10.13","-incremental","-enable-batch-mode","-serialize-diagnostics","-index-store-path","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-Xfrontend","-enable-cross-import-overlays","-j10","-DSWIFT_PACKAGE","-DDEBUG","-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE","-module-cache-path","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-emit-objc-header","-emit-objc-header-path","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedPackageTests.build/include/AnkaSharedPackageTests-Swift.h","-plugin-path","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.4.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.4.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-Xcc","-g","-package-name","shared"]
+
+  "C.AnkaSharedPackageTests-arm64-apple-macosx-debug.test":
+    tool: shell
+    inputs: ["/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/Creature.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/EvolutionEngine.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/HealthKitService.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/HealthSnapshot.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/PetState.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaShared.build/PetStore.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedPackageTests.build/runner.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedTests.build/EvolutionEngineTests.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedPackageTests.product/Objects.LinkFileList"]
+    outputs: ["/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedPackageTests.xctest/Contents/MacOS/AnkaSharedPackageTests"]
+    description: "Linking ./.build/arm64-apple-macosx/debug/AnkaSharedPackageTests.xctest/Contents/MacOS/AnkaSharedPackageTests"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-L","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug","-o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedPackageTests.xctest/Contents/MacOS/AnkaSharedPackageTests","-module-name","AnkaSharedPackageTests","-Xlinker","-no_warn_duplicate_libraries","-Xlinker","-bundle","-Xlinker","-rpath","-Xlinker","@loader_path/../../../","@/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedPackageTests.product/Objects.LinkFileList","-Xlinker","-rpath","-Xlinker","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift-6.2/macosx","-target","arm64-apple-macosx14.0","-Xlinker","-add_ast_path","-Xlinker","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/Modules/AnkaShared.swiftmodule","-Xlinker","-add_ast_path","-Xlinker","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/Modules/AnkaSharedPackageTests.swiftmodule","-Xlinker","-add_ast_path","-Xlinker","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/Modules/AnkaSharedTests.swiftmodule","-plugin-path","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.4.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g"]
+
+  "C.AnkaSharedTests-arm64-apple-macosx-debug.module":
+    tool: shell
+    inputs: ["/Users/birkanaksoy/oyun009/Shared/Tests/AnkaSharedTests/EvolutionEngineTests.swift","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/Modules/AnkaShared.swiftmodule","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedTests.build/sources"]
+    outputs: ["/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedTests.build/EvolutionEngineTests.swift.o","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/Modules/AnkaSharedTests.swiftmodule"]
+    description: "Compiling Swift Module 'AnkaSharedTests' (1 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","AnkaSharedTests","-emit-dependencies","-emit-module","-emit-module-path","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/Modules/AnkaSharedTests.swiftmodule","-output-file-map","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedTests.build/output-file-map.json","-parse-as-library","-incremental","-c","@/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedTests.build/sources","-I","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/Modules","-target","arm64-apple-macosx14.0","-incremental","-enable-batch-mode","-serialize-diagnostics","-index-store-path","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-Xfrontend","-enable-cross-import-overlays","-j10","-DSWIFT_PACKAGE","-DDEBUG","-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE","-module-cache-path","/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-swift-version","6","-plugin-path","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.4.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.4.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-Xcc","-g","-package-name","shared"]
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/birkanaksoy/oyun009/Shared/Sources/AnkaShared/","/Users/birkanaksoy/oyun009/Shared/Tests/AnkaSharedTests/","/Users/birkanaksoy/oyun009/Shared/Package.swift","/Users/birkanaksoy/oyun009/Shared/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+

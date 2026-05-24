@@ -1,0 +1,12 @@
+{
+  "": {
+    "swift-dependencies": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedTests.build/primary.swiftdeps"
+  },
+  "/Users/birkanaksoy/oyun009/Shared/Tests/AnkaSharedTests/EvolutionEngineTests.swift": {
+    "dependencies": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedTests.build/EvolutionEngineTests.d",
+    "object": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedTests.build/EvolutionEngineTests.swift.o",
+    "swiftmodule": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedTests.build/EvolutionEngineTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedTests.build/EvolutionEngineTests.swiftdeps",
+    "diagnostics": "/Users/birkanaksoy/oyun009/Shared/.build/arm64-apple-macosx/debug/AnkaSharedTests.build/EvolutionEngineTests.dia"
+  }
+}
