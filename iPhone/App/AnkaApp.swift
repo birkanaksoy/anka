@@ -1,4 +1,5 @@
 import SwiftUI
+import WidgetKit
 import AnkaShared
 
 @main
@@ -54,6 +55,7 @@ struct AnkaApp: App {
             if let pet = result.pet {
                 ConnectivityService.shared.push(pet: pet)
             }
+            WidgetCenter.shared.reloadAllTimelines()
         }
     }
 }

@@ -56,6 +56,8 @@ targets:
       - path: Watch
     dependencies:
       - package: AnkaShared
+      - target: AnkaWidget
+        embed: true
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.birkanaksoy.anka.watchkitapp
@@ -65,6 +67,23 @@ targets:
         INFOPLIST_KEY_WKCompanionAppBundleIdentifier: com.birkanaksoy.anka
         INFOPLIST_KEY_NSHealthShareUsageDescription: "Anka grows and evolves from your daily steps, heart rate, stand hours, sleep and workouts."
         CODE_SIGN_ENTITLEMENTS: Watch/AnkaWatch.entitlements
+
+  AnkaWidget:
+    type: app-extension
+    platform: watchOS
+    sources:
+      - path: Widget
+    dependencies:
+      - package: AnkaShared
+      - sdk: SwiftUI.framework
+      - sdk: WidgetKit.framework
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.birkanaksoy.anka.watchkitapp.widget
+        CODE_SIGN_ENTITLEMENTS: Widget/AnkaWidget.entitlements
+        INFOPLIST_KEY_CFBundleDisplayName: Anka
+        GENERATE_INFOPLIST_FILE: NO
+        INFOPLIST_FILE: Widget/Info.plist
 
   AnkaTests:
     type: bundle.unit-test
