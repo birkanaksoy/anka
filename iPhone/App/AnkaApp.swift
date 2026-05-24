@@ -57,6 +57,12 @@ struct AnkaApp: App {
             }
             WidgetCenter.shared.reloadAllTimelines()
         }
+        if let pet = result.pet {
+            await NotificationService.shared.scheduleDailyReminderIfNeeded(pet: pet)
+        }
+        if let evolved = result.evolved {
+            await NotificationService.shared.scheduleEvolutionCelebration(record: evolved)
+        }
     }
 }
 
