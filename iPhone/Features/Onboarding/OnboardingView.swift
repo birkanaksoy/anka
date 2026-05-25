@@ -14,8 +14,10 @@ struct OnboardingView: View {
             VStack {
                 switch step {
                 case 0: welcome
-                case 1: speciesPicker
-                case 2: namePicker
+                case 1: howItWorks
+                case 2: watchPromo
+                case 3: speciesPicker
+                case 4: namePicker
                 default: EmptyView()
                 }
             }
@@ -32,6 +34,8 @@ struct OnboardingView: View {
         .ignoresSafeArea()
     }
 
+    // MARK: - Step 0 · Welcome
+
     @ViewBuilder
     private var welcome: some View {
         Spacer()
@@ -45,10 +49,10 @@ struct OnboardingView: View {
                 .foregroundStyle(.secondary)
         }
         Spacer()
-        Text("Live on your Apple Watch.\nYour steps, heartbeats, and sleep shape who it becomes.\nChoose the creature that will walk with you.")
+        Text("A mythic creature lives on your Apple Watch.\nYour daily life shapes who it becomes.")
             .multilineTextAlignment(.center)
             .font(.body)
-            .foregroundStyle(.white.opacity(0.8))
+            .foregroundStyle(.white.opacity(0.85))
             .padding(.horizontal)
         Spacer()
         Button(action: { step = 1 }) {
@@ -57,6 +61,133 @@ struct OnboardingView: View {
         }
         .buttonStyle(AnkaPrimaryButtonStyle())
     }
+
+    // MARK: - Step 1 · How it works
+
+    @ViewBuilder
+    private var howItWorks: some View {
+        VStack(spacing: 6) {
+            Spacer().frame(height: 24)
+            Text("How It Works")
+                .font(.system(.largeTitle, design: .serif, weight: .bold))
+                .foregroundStyle(Color.ankaGold)
+            Text("Just live. Your companion does the rest.")
+                .font(.system(.subheadline, design: .serif))
+                .italic()
+                .foregroundStyle(.secondary)
+        }
+
+        Spacer()
+
+        VStack(alignment: .leading, spacing: 20) {
+            howRow(icon: "figure.walk",
+                   title: "Walk far",
+                   subtitle: "Your companion becomes a Wanderer.")
+            howRow(icon: "heart.fill",
+                   title: "Get your heart pumping",
+                   subtitle: "It becomes a Warrior.")
+            howRow(icon: "figure.stand",
+                   title: "Stand often through the day",
+                   subtitle: "It becomes a Sage.")
+            howRow(icon: "moon.stars.fill",
+                   title: "Sleep deeply",
+                   subtitle: "It becomes a Dreamer.")
+            howRow(icon: "figure.run",
+                   title: "Work out daily",
+                   subtitle: "It becomes a Master.")
+        }
+        .padding(.horizontal)
+
+        Spacer()
+
+        Text("After about two weeks of living your normal life, your companion fully evolves.")
+            .font(.footnote)
+            .multilineTextAlignment(.center)
+            .foregroundStyle(.white.opacity(0.55))
+            .padding(.horizontal)
+
+        Button(action: { step = 2 }) {
+            Text("Continue")
+                .frame(maxWidth: .infinity)
+        }
+        .buttonStyle(AnkaPrimaryButtonStyle())
+    }
+
+    private func howRow(icon: String, title: String, subtitle: String) -> some View {
+        HStack(alignment: .top, spacing: 14) {
+            Image(systemName: icon)
+                .font(.title2)
+                .frame(width: 36, height: 36)
+                .foregroundStyle(Color.ankaGold)
+                .background(
+                    Circle().fill(Color.ankaGold.opacity(0.12))
+                )
+                .accessibilityHidden(true)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title)
+                    .font(.system(.headline, design: .serif))
+                    .foregroundStyle(.white)
+                Text(subtitle)
+                    .font(.caption)
+                    .foregroundStyle(.white.opacity(0.65))
+            }
+        }
+    }
+
+    // MARK: - Step 2 · Watch promo
+
+    @ViewBuilder
+    private var watchPromo: some View {
+        Spacer()
+        Image(systemName: "applewatch.watchface")
+            .font(.system(size: 96))
+            .foregroundStyle(Color.ankaGold)
+            .accessibilityHidden(true)
+
+        Spacer().frame(height: 16)
+
+        Text("Live on Your Wrist")
+            .font(.system(.largeTitle, design: .serif, weight: .bold))
+            .foregroundStyle(Color.ankaGold)
+
+        Spacer().frame(height: 12)
+
+        VStack(spacing: 14) {
+            promoBullet("Add the Anka complication to your watch face — your companion lives there.")
+            promoBullet("Tap the Watch app to greet, feed, or pet with the Digital Crown.")
+            promoBullet("The iPhone is the album. The Watch is the companion.")
+        }
+        .padding(.horizontal, 24)
+
+        Spacer()
+
+        Text("You can add the complication later from your watch face.")
+            .font(.footnote)
+            .multilineTextAlignment(.center)
+            .foregroundStyle(.white.opacity(0.55))
+            .padding(.horizontal)
+
+        Button(action: { step = 3 }) {
+            Text("Choose Your Companion")
+                .frame(maxWidth: .infinity)
+        }
+        .buttonStyle(AnkaPrimaryButtonStyle())
+    }
+
+    private func promoBullet(_ text: String) -> some View {
+        HStack(alignment: .top, spacing: 10) {
+            Image(systemName: "sparkles")
+                .foregroundStyle(Color.ankaGold)
+                .accessibilityHidden(true)
+            Text(text)
+                .font(.system(.subheadline, design: .serif))
+                .foregroundStyle(.white.opacity(0.85))
+                .multilineTextAlignment(.leading)
+            Spacer(minLength: 0)
+        }
+    }
+
+    // MARK: - Step 3 · Species picker
 
     @ViewBuilder
     private var speciesPicker: some View {
@@ -74,12 +205,14 @@ struct OnboardingView: View {
                 )
             }
         }
-        Button(action: { step = 2 }) {
+        Button(action: { step = 4 }) {
             Text("Continue")
                 .frame(maxWidth: .infinity)
         }
         .buttonStyle(AnkaPrimaryButtonStyle())
     }
+
+    // MARK: - Step 4 · Name picker
 
     @ViewBuilder
     private var namePicker: some View {
@@ -95,10 +228,16 @@ struct OnboardingView: View {
             .padding(.horizontal, 40)
             .padding(.top)
         Spacer()
+        Text("After hatching, Anka will grant access to Apple Health to start growing.")
+            .font(.footnote)
+            .multilineTextAlignment(.center)
+            .foregroundStyle(.white.opacity(0.55))
+            .padding(.horizontal)
         Button {
             Task {
                 let finalName = name.trimmingCharacters(in: .whitespaces).isEmpty
                     ? selectedSpecies.displayName : name
+                try? await HealthKitService.shared.requestAuthorization()
                 await onComplete(selectedSpecies, finalName)
             }
         } label: {
@@ -117,7 +256,11 @@ struct SpeciesCard: View {
 
     var body: some View {
         Button(action: onTap) {
-            HStack {
+            HStack(spacing: 12) {
+                CreatureArt(species: species, stage: .adult)
+                    .frame(width: 56, height: 56)
+                    .accessibilityHidden(true)
+
                 VStack(alignment: .leading, spacing: 4) {
                     Text(species.displayName)
                         .font(.system(.title3, design: .serif, weight: .semibold))
@@ -128,20 +271,16 @@ struct SpeciesCard: View {
                         .multilineTextAlignment(.leading)
                 }
                 Spacer()
-                if locked {
-                    Image(systemName: "lock.fill")
-                        .foregroundStyle(Color.ankaGold.opacity(0.6))
-                        .accessibilityHidden(true)
-                } else if isSelected {
+                if isSelected {
                     Image(systemName: "checkmark.circle.fill")
                         .foregroundStyle(Color.ankaGold)
                         .accessibilityHidden(true)
                 }
             }
             .accessibilityElement(children: .combine)
-            .accessibilityLabel(locked ? "\(species.displayName), locked" : species.displayName)
+            .accessibilityLabel(species.displayName)
             .accessibilityValue(isSelected ? "Selected" : "Not selected")
-            .accessibilityHint(locked ? "Unlock with Anka Premium" : species.loreShort)
+            .accessibilityHint(species.loreShort)
             .padding()
             .background(
                 RoundedRectangle(cornerRadius: 12)
