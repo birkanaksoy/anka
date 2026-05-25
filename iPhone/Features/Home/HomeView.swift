@@ -136,33 +136,9 @@ struct CreatureCanvas: View {
     let stage: LifeStage
 
     var body: some View {
-        ZStack {
-            Circle()
-                .fill(
-                    RadialGradient(
-                        colors: [Color.ankaGold.opacity(0.3), .clear],
-                        center: .center,
-                        startRadius: 10, endRadius: 140
-                    )
-                )
-            // Placeholder silhouette: real illustrations land in Sprint 8.
-            Text(emojiFor(species: species, stage: stage))
-                .font(.system(size: 120))
-                .accessibilityHidden(true)
-        }
-        .accessibilityElement(children: .combine)
-        .accessibilityLabel("\(species.displayName), stage \(stage.displayName)")
-    }
-
-    private func emojiFor(species: CreatureSpecies, stage: LifeStage) -> String {
-        if stage == .egg { return "🥚" }
-        switch species {
-        case .anka:         return "🔥"
-        case .sahmaran:     return "🐍"
-        case .hodag:        return "🦌"
-        case .karakoncolos: return "❄️"
-        case .pirebatak:    return "🦊"
-        }
+        CreatureArt(species: species, stage: stage)
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel("\(species.displayName), stage \(stage.displayName)")
     }
 }
 

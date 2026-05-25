@@ -68,8 +68,8 @@ struct WatchPetView: View {
             NourishmentRing(progress: nourishmentProgress)
                 .frame(width: 120, height: 120)
 
-            Text(emoji)
-                .font(.system(size: 56))
+            CreatureArt(species: pet.species, stage: pet.currentStage)
+                .frame(width: 86, height: 86)
                 .scaleEffect(scaleForBreath)
                 .shadow(color: Color.ankaGoldWatch.opacity(0.5), radius: 6)
                 .accessibilityLabel("\(pet.species.displayName), \(pet.currentStage.displayName)")
@@ -94,17 +94,6 @@ struct WatchPetView: View {
     }
 
     // MARK: - Derived
-
-    private var emoji: String {
-        if pet.currentStage == .egg { return "🥚" }
-        switch pet.species {
-        case .anka:         return "🔥"
-        case .sahmaran:     return "🐍"
-        case .hodag:        return "🦌"
-        case .karakoncolos: return "❄️"
-        case .pirebatak:    return "🦊"
-        }
-    }
 
     private var scaleForBreath: CGFloat {
         // Breathing range 0.92 → 1.08
