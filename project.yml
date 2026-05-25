@@ -38,7 +38,7 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.birkanaksoy.anka
         TARGETED_DEVICE_FAMILY: "1,2"
-        INFOPLIST_KEY_CFBundleDisplayName: Anka
+        INFOPLIST_KEY_CFBundleDisplayName: My Anka
         INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
         INFOPLIST_KEY_NSHealthShareUsageDescription: "Anka grows and evolves from your daily steps, heart rate, stand hours, sleep and workouts."
         INFOPLIST_KEY_UIUserInterfaceStyle: Dark
@@ -66,7 +66,7 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.birkanaksoy.anka.watchkitapp
-        INFOPLIST_KEY_CFBundleDisplayName: Anka
+        INFOPLIST_KEY_CFBundleDisplayName: My Anka
         INFOPLIST_KEY_WKApplication: YES
         INFOPLIST_KEY_WKWatchOnly: NO
         INFOPLIST_KEY_WKCompanionAppBundleIdentifier: com.birkanaksoy.anka
@@ -86,7 +86,7 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.birkanaksoy.anka.watchkitapp.widget
         CODE_SIGN_ENTITLEMENTS: Widget/AnkaWidget.entitlements
-        INFOPLIST_KEY_CFBundleDisplayName: Anka
+        INFOPLIST_KEY_CFBundleDisplayName: My Anka
         GENERATE_INFOPLIST_FILE: NO
         INFOPLIST_FILE: Widget/Info.plist
 

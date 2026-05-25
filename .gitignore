@@ -20,6 +20,8 @@ Package.resolved
 GoogleService-Info.plist
 *.p12
 *.mobileprovision
+*.p8
+.auth_key.p8
 .env
 
 # Editor
