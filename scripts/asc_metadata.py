@@ -37,10 +37,19 @@ def req(method, path, body=None):
         raise
 
 
-SUBTITLE = "A Wrist Companion of Myth"
-DESCRIPTION = """A WRIST COMPANION BORN OF MYTH
+SUBTITLE = "Apple Watch Mythic Companion"
+DESCRIPTION = """BUILT FOR YOUR APPLE WATCH
 
-Hatch a mythological creature on your wrist. Your daily steps, heartbeats, stand hours, sleep and workouts shape what it becomes. Every choice in your day pushes your Anka toward a different evolution.
+My Anka lives on your wrist. A small mythic creature, watching the world with you — through the day, on every clock face, with every glance at your watch.
+
+Your steps, heartbeats, stand hours, sleep and workouts feed it. Five evolution paths open from the same starting egg. The companion you raise is shaped by the life you actually live.
+
+WATCH-FIRST EXPERIENCE
+• Live on the watch face — four complication families
+• Always-On Display friendly, sips battery
+• Digital Crown to pet your companion — real haptic response
+• Tap to feed, tap to greet, all from the wrist
+• No need to open the iPhone app every day — your Watch is the game
 
 FIVE COMPANIONS FROM ANATOLIAN MYTH
 • Anka — the immortal firebird that burns to ash and rises again
@@ -56,24 +65,19 @@ FIVE PATHS TO EVOLVE
 • Dreamer — for those who sleep deeply
 • Master — for those whose workouts are sacred
 
-WATCH-FIRST DESIGN
-• Live complications across every accessory family
-• Digital Crown to pet your companion
-• Haptic responses calibrated for the wrist
-• Always-On Display friendly
+IPHONE COMPANION
+The iPhone app holds your Album of evolved creatures, the Book of Lore for each myth, and your daily health summary. The Watch is the heart of the experience.
 
-PURE PREMIUM
-One purchase. Forever.
-No ads. No subscriptions. No upsells.
-A companion you actually own.
+ONE-TIME PURCHASE
+$4.99. No ads. No subscriptions. No in-app purchases. The companion you actually own.
 
 PRIVACY FIRST
 Your health data never leaves your device. We have no servers. We have no analytics about you. My Anka is a quiet, personal thing.
 
 Crafted by an independent developer for everyone who wants a small, beautiful, mythic companion on their wrist."""
 
-KEYWORDS = "tamagotchi,virtual pet,watch,companion,health,fitness,steps,mythology,idle,pet,evolve"
-PROMO = "Hatch a creature from Anatolian myth on your wrist. Your steps, heartbeats, and sleep shape who it becomes. Five companions. Five paths."
+KEYWORDS = "apple watch,watch game,complication,wrist,tamagotchi,virtual pet,companion,watch face,healthkit"
+PROMO = "A mythic creature lives on your Apple Watch. Steps, heartbeats and sleep shape its evolution. One-time $4.99, no subscriptions."
 SUPPORT_URL = "https://birkanaksoy.github.io/anka/support.html"
 MARKETING_URL = "https://birkanaksoy.github.io/anka/"
 PRIVACY_URL = "https://birkanaksoy.github.io/anka/privacy.html"

@@ -45,7 +45,7 @@ struct OnboardingView: View {
                 .foregroundStyle(.secondary)
         }
         Spacer()
-        Text("Your steps, heartbeats, and sleep will shape it.\nChoose the creature that will walk with you.")
+        Text("Live on your Apple Watch.\nYour steps, heartbeats, and sleep shape who it becomes.\nChoose the creature that will walk with you.")
             .multilineTextAlignment(.center)
             .font(.body)
             .foregroundStyle(.white.opacity(0.8))
