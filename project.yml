@@ -37,10 +37,11 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.birkanaksoy.anka
-        TARGETED_DEVICE_FAMILY: "1,2"
+        TARGETED_DEVICE_FAMILY: "1"
         INFOPLIST_KEY_CFBundleDisplayName: My Anka
         INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
-        INFOPLIST_KEY_NSHealthShareUsageDescription: "Anka grows and evolves from your daily steps, heart rate, stand hours, sleep and workouts."
+        INFOPLIST_KEY_NSHealthShareUsageDescription: "My Anka grows and evolves from your daily steps, heart rate, stand hours, sleep and workouts."
+        INFOPLIST_KEY_NSHealthUpdateUsageDescription: "My Anka does not write data back to Apple Health."
         INFOPLIST_KEY_UIUserInterfaceStyle: Dark
         INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.games
         CODE_SIGN_ENTITLEMENTS: iPhone/Anka.entitlements
@@ -70,8 +71,10 @@ targets:
         INFOPLIST_KEY_WKApplication: YES
         INFOPLIST_KEY_WKWatchOnly: NO
         INFOPLIST_KEY_WKCompanionAppBundleIdentifier: com.birkanaksoy.anka
-        INFOPLIST_KEY_NSHealthShareUsageDescription: "Anka grows and evolves from your daily steps, heart rate, stand hours, sleep and workouts."
+        INFOPLIST_KEY_NSHealthShareUsageDescription: "My Anka grows and evolves from your daily steps, heart rate, stand hours, sleep and workouts."
+        INFOPLIST_KEY_NSHealthUpdateUsageDescription: "My Anka does not write data back to Apple Health."
         CODE_SIGN_ENTITLEMENTS: Watch/AnkaWatch.entitlements
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
 
   AnkaWidget:
     type: app-extension
