@@ -54,6 +54,7 @@ targets:
         UIBackgroundModes:
           - fetch
           - processing
+        ITSAppUsesNonExemptEncryption: false
 
   AnkaWatch:
     type: application
